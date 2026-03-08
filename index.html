@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gokul Manoj</title>
+<title>Gokul Manoj | Data Science Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -22,6 +22,10 @@
   --glow-primary: 0 0 20px rgba(0, 224, 255, 0.5);
   --glow-secondary: 0 0 20px rgba(106, 92, 255, 0.5);
   --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Add inside :root if missing */
+  --accent: #ff2a6d;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
 }
 
 * {
@@ -429,6 +433,201 @@ section h2::after {
   height: 4px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   border-radius: 2px;
+}
+
+/* ===== ACADEMICS / EDUCATION ===== */
+.education-timeline {
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent));
+  border-radius: 3px;
+  top: 20px;
+}
+
+.education-item {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: calc(50% + 30px);
+  position: relative;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: var(--transition);
+}
+
+.education-item.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.education-item:nth-child(even) {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: calc(50% + 30px);
+}
+
+.education-item:nth-child(even) .education-content {
+  text-align: right;
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--dark);
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  top: 10px;
+  z-index: 2;
+  transition: var(--transition);
+  box-shadow: 0 0 0 4px rgba(0, 224, 255, 0.2);
+}
+
+.education-item:hover::before {
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0, 224, 255, 0.5), 0 0 20px var(--primary);
+  transform: translateX(-50%) scale(1.2);
+}
+
+.education-content {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 25px 30px;
+  backdrop-filter: blur(20px);
+  max-width: 400px;
+  width: 100%;
+  transition: var(--transition);
+  position: relative;
+}
+
+.education-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 20px 20px 0 0;
+}
+
+.education-content:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.education-content h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--light);
+}
+
+.education-content .institution {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.education-content .location {
+  color: var(--gray);
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.education-content .year {
+  display: inline-block;
+  background: rgba(106, 92, 255, 0.2);
+  color: var(--secondary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.education-content .cgpa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(0,224,255,0.15), rgba(106,92,255,0.15));
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.education-content .cgpa i {
+  color: var(--accent);
+}
+
+.education-content .degree {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Responsive for Academics */
+@media (max-width: 992px) {
+  .education-timeline::before {
+    left: 30px;
+  }
+  
+  .education-item,
+  .education-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 70px;
+    padding-right: 0;
+  }
+  
+  .education-item::before,
+  .education-item:nth-child(even)::before {
+    left: 30px;
+  }
+  
+  .education-content,
+  .education-item:nth-child(even) .education-content {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-timeline::before {
+    left: 20px;
+  }
+  
+  .education-item,
+  .education-item:nth-child(even) {
+    padding-left: 55px;
+  }
+  
+  .education-item::before {
+    left: 20px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .education-content {
+    padding: 25px 20px;
+  }
 }
 
 /* ===== ABOUT ===== */
@@ -1060,6 +1259,7 @@ footer a:hover {
     <li><a href="#about" class="active">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#academics">Academics</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1179,6 +1379,36 @@ automation, time-series modeling, and real-time analytics pipelines.
       <li>Built multi-agent LLM system using LangChain for behavioral analysis and automated insights generation</li>
     </ul>
   </div>    
+</section>
+
+<!-- ACADEMICS / EDUCATION -->
+<section id="academics">
+  <h2>Academics</h2>
+  <div class="education-timeline">
+    
+    <div class="education-item animate-on-scroll">
+      <div class="education-content">
+        <span class="year"><i class="far fa-calendar-check"></i> 2025</span>
+        <h3>Master of Science in Data Science</h3>
+        <span class="institution">CHRIST (Deemed to be University)</span>
+        <span class="location"><i class="fas fa-map-marker-alt"></i> Lavasa, Pune</span>
+        <div class="cgpa"><i class="fas fa-award"></i> CGPA: 8.53 / 10</div>
+        <!-- <p class="degree">Specialized in Machine Learning, Statistical Modeling, and Big Data Analytics with hands-on research in multimodal AI systems.</p> -->
+      </div>
+    </div>
+    
+    <div class="education-item animate-on-scroll">
+      <div class="education-content">
+        <span class="year"><i class="far fa-calendar-check"></i> 2023</span>
+        <h3>B.Sc. in Computer Science, Mathematics & Statistics</h3>
+        <span class="institution">CHRIST (Deemed to be University)</span>
+        <span class="location"><i class="fas fa-map-marker-alt"></i> Bengaluru</span>
+        <div class="cgpa"><i class="fas fa-award"></i> CGPA: 7.86 / 10</div>
+        <!-- <p class="degree">Built strong foundation in algorithms, probability theory, and data structures. Completed capstone project on predictive analytics.</p> -->
+      </div>
+    </div>
+    
+  </div>
 </section>
 
 <!-- PROJECTS -->
@@ -1473,5 +1703,4 @@ document.querySelectorAll('.skill-fill').forEach(fill => {
 </script>
 
 </body>
-
 </html>
